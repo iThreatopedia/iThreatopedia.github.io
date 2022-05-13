@@ -14,7 +14,7 @@ Commands:
   - Name: osascript making network connections
     Description: This query detects any instance of osascript making a network connection. 
     Usecase: Adversaries may use this technique for C2 comms via HTTP or HTTPS. Due to osascript limitations, a valid certificate needs to be presented by the C2 server for successful HTTPS C2 comms.
-    Category: Execute
+    Category: Execution
     Privileges: User or Root
     MitreID: T1059.007
     Reproduce:
@@ -29,7 +29,7 @@ Commands:
   - Name: osascript executing JavaScript
     Description: This query will detect any instance of osascript executing JavaScript. 
     Usecase: Adversaries may use this for C2 comms. Apfell is a popular red team tool that leverages this technique by default.
-    Category: Execute
+    Category: Execution
     Privileges: User or Root
     MitreID: T1059.007
     Reproduce:
@@ -44,7 +44,7 @@ Commands:
   - Name: osascript prompting for password
     Description: This query is meant to detect credential access post-exploitation techniques. 
     Usecase: Adversaries may use this for post-exploitation objectives, such as credential access by generating a prompt to ask a user for their password.
-    Category: Execute
+    Category: Credential Access
     Privileges: User or Root
     MitreID: T1059.002
     Reproduce:
@@ -58,7 +58,7 @@ Commands:
   - Name: osascript shelling out
     Description: This query will detect any instance of osascript running some binary, consistent with a C2 shelling out.
     Usecase: Adversaries may use this for post-exploitation objectives, such as credential access by generating a prompt to ask a user for their password.
-    Category: Execute
+    Category: Execution
     Privileges: User or Root
     MitreID: T1059
     Reproduce:
@@ -72,7 +72,7 @@ Commands:
   - Name: osascript executing AppleScript
     Description: This query detect any instance of osascript executing AppleScript. Notice we are making some dangerous exclusions - this is because we want to minimize duplicate alerts since the "osascript executing JavaScript" already covers this. This will generate lots of false positives.
     Usecase: Adversaries may use this for post-exploitation objectives, such as credential access by generating a prompt to ask a user for their password.
-    Category: Execute
+    Category: Execution
     Privileges: User or Root
     MitreID: T1059.002
     Reproduce:
