@@ -53,7 +53,8 @@ Commands:
       - EDR: process_name = "osascript" and process_cmdline =  "*password*"
     Respond:
       - Step: View the cmdline of osascript execution. If a true positive, this may provide exactly what the attacker is attempting to achieve.
-      - Step: View the process' parent information. Is the binary suspicious? Typically osascript post-exploitation execution's will be the result of an adversary "shelling out" from their C2 to prompt a user for something.
+      - Step: View the process' parent information. Is the binary suspicious? Typically osascript post-exploitation execution's will be the result of an adversary "shelling out" from their C2.
+      - Step: Does it make sense the parent process is asking the user for their password?
 
   - Name: osascript shelling out
     Description: This query will detect any instance of osascript running some binary, consistent with a C2 shelling out.
@@ -71,7 +72,7 @@ Commands:
       - Step: View the cmdline of the target process. This will be the process launched by osascript. Is the cmdline suspicious? 
 
   - Name: osascript executing AppleScript
-    Description: This query detect any instance of osascript executing AppleScript. Notice we are making some dangerous exclusions - this is because we want to minimize duplicate alerts since the "osascript executing JavaScript" already covers this. This will generate lots of false positives.
+    Description: This query detect any instance of osascript executing AppleScript.
     Usecase: Adversaries may use this for post-exploitation objectives, such as credential access by generating a prompt to ask a user for their password.
     Category: Execution
     Privileges: User or Root
@@ -80,7 +81,8 @@ Commands:
       - Prelude Operator: Run the "JXA Access" Chain, which contains the Deploy a stage-0 JXA agent TTP. Once the agent beacons back to Operator, select it and execute any macOS chain or TTP.
     Detect:
       - EDR: process_name = "osascript" AND NOT (process_cmdline = "*.js*" OR process_cmdline = "JavaScript")
+      - EDR Notes: Notice we are making some dangerous exclusions - this is because we want to minimize duplicate alerts since the "osascript executing JavaScript" already covers this. This will generate lots of false positives, so you'll need to exclude based on process relationship information.
     Respond:
       - Step: View the cmdline of osascript execution. If a true positive, this may provide exactly what the attacker is attempting to achieve.
-      - Step: View the process' parent information. Is the binary suspicious? Typically osascript post-exploitation execution's will be the result of an adversary "shelling out" from their C2 to prompt a user for something.
+      - Step: View the process' parent information. Is the binary suspicious? Typically osascript post-exploitation execution's will be the result of an adversary "shelling out" from their C2.
 ---
