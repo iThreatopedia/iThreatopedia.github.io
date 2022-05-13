@@ -13,14 +13,14 @@ NOTE: "Please use the rendered version of this file"
     "versions": {"attack": "10", "navigator": "4.5.5", "layer": "4.3"},
     "domain": "enterprise-attack",
     "description": "ATT&CK alignment of the iThreatopedia project, see https://iThreatopedia.github.io/.",
-    "filters": {"platforms": ["Windows"]},
+    "filters": {"platforms": ["macOS"]},
     "layout": {
-        "layout": "flat",
         "aggregateFunction": "average",
-        "showID": false,
-        "showName": true,
+        "countUnscored": false,
+        "layout": "side",
         "showAggregateScores": false,
-        "countUnscored": false
+        "showID": false,
+        "showName": true
     },
     "techniques": [
         {% assign max_score = 0 %}
@@ -30,7 +30,7 @@ NOTE: "Please use the rendered version of this file"
         {% endfor %}
     ],
     "gradient": {
-        "colors": ["#cdf0fc", "#0d89b3"],
+        "colors": ["#ff6666ff", "#ffe766ff"],
         "minValue": 0,
         "maxValue": {{max_score}}
     }
