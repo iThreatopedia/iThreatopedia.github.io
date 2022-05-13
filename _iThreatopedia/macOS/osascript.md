@@ -28,7 +28,7 @@ Commands:
 
   - Name: osascript executing JavaScript
     Description: This query will detect any instance of osascript executing JavaScript. 
-    Usecase: Adversaries may use this for C2 comms. Apfell is a popular red team tool that leverages this technique by default.
+    Usecase: Adversaries may use this for C2 comms. Apfell is a popular red team C2 agent that leverages this technique by default.
     Category: Execution
     Privileges: User or Root
     MitreID: T1059.007
@@ -65,6 +65,7 @@ Commands:
       - Prelude Operator: Run the "JXA Access" Chain, which contains the Deploy a stage-0 JXA agent TTP. Once the agent beacons back to Operator, select it and execute any macOS chain or TTP.
     Detect:
       - EDR: parent_process_name = "osascript"  AND NOT process_name = "osascript"
+      - EDR Notes: When adding exclusions to this query for baselining or threat hunting, DO NOT exclude based on a shell/interpreter, such as sh or bash. When JXA agents are ran with osascript, they will shell out using sh, bash, or some other shell.
     Respond:
       - Step: View the cmdline of osascript execution. If a true positive, this may provide exactly what the attacker is attempting to achieve.
       - Step: View the cmdline of the target process. This will be the process launched by osascript. Is the cmdline suspicious? 

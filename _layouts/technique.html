@@ -86,12 +86,13 @@ layout: common
 	<b>Detect:</b>
 	<ul>
 		{% for detection in detections %}{% for entity in detection %}
-			{% if entity[0] != 'IOC' %}
-				{% capture value %} {{ entity[1] }} {% endcapture %}
+			{% if entity[0] != 'EDR Notes' %}
+				{% assign value = entity[1] | escape %}
+				<li>{{entity[0]}}: {{value}}</li>
 			{% else %}
 				{% assign value = entity[1] | escape %}
+				<li>{{entity[0]}}: <pre><code>{{value}}</code></pre></li>
 			{% endif %}
-			<li>{{entity[0]}}: <pre><code>{{value}}</code></pre></li>
 		{% endfor %}{% endfor %}
 	</ul>
 </div>
