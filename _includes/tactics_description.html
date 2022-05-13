@@ -1,0 +1,7 @@
+<dl>
+    {% for tactic_pair in site.data.tactics %}
+    {% assign tactic = tactic_pair[1] %}
+    <dt class="tactic-name">{{ tactic.label }}</dt>
+    <dd>{{ tactic.description | markdownify }}</dd>
+    {% endfor %}
+</dl>

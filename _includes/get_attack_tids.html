@@ -1,4 +1,4 @@
-<ul class="function-list attack-technique-list">
+<ul class="tactic-list attack-technique-list">
 	{% assign techniques = include.bin.Commands | group_by:"MitreID" %}
 	{% for technique in techniques %}
     {% if technique.name != "" %}

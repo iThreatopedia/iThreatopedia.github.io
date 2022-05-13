@@ -3,7 +3,7 @@ layout: common
 ---
 
 {% include page_title.html title=page.Name %}
-{% include function_list.html bin=page %}
+{% include tactic_list.html bin=page %}
 
 {{ page.Description | markdownify }}
 
@@ -50,9 +50,9 @@ layout: common
 <ol>
 {% assign test = page.Commands | group_by:"Category"%}
 {% for Command in test%}
-	{% assign function_name = Command.name | downcase %}
-<h2 id="{{function_name}}" class ="function-name">
-	{{- site.data.functions[function_name].label -}}
+	{% assign tactic_name = Command.name | downcase %}
+<h2 id="{{tactic_name}}" class ="tactic-name">
+	{{- site.data.tactics[tactic_name].label -}}
 </h2>
 	{% for item in Command.items %}
 	

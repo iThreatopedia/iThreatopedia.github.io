@@ -31,6 +31,6 @@ Below is a list of Tactics, Techniques and Procedures (TTP's) targeting the macO
 </div>
 </div>
 
-[functions]: /functions/
+[tactics]: /tactics/
 
 {% include technique_table.html %}
