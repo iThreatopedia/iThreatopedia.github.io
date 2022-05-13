@@ -1,0 +1,24 @@
+---
+Name: 
+Description: 
+Author: 
+Created: 2022-05-08
+Full_Path:
+  - Path: 
+Resources:
+  - Link: 
+Commands:
+
+  - Name: 
+    Description: This query detects any instance of ... 
+    Usecase: Adversaries may use this technique for ...
+    Category: 
+    Privileges: User or Root
+    MitreID: T1059.007
+    Reproduce:
+      - Prelude Operator: Run the "#changeme" Chain, which contains the "#changeme" TTP.
+    Detect:
+      - EDR: 
+    Respond:
+      - Step: 
+---
