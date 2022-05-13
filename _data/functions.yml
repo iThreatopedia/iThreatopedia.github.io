@@ -1,65 +1,65 @@
 ---
-execute:
-  label: Execute
-  description: |
-    This technique can achieve abritrary code execution.
-
-download:
-  label: Download
-  description: |
-    This technique can download files.
-
-upload:
-  label: Upload
-  description: |
-    This technique can upload files.
-
-encode:
-  label: Encode
-  description: |
-    This technique can encode files.
-
-decode:
-  label: Decode
-  description: |
-    This technique can decode files.
-
-ads:
-  label: Alternate data streams
-  description: |
-    This technique can write or read alternate data streams.
-
-copy:
-  label: Copy
-  description: |
-    This technique can copy file.
-
-credentials:
-  label: Credentials
-  description: |
-    This technique can view credentials file.
-
-compile:
-  label: Compile
-  description: |
-    This technique can compile code.
-
-awl bypass:
-  label: AWL bypass
-  description: |
-    This technique can bypass application whitelisting solutions.
-
-uac bypass:
-  label: UAC bypass
-  description: |
-    This technique can bypass User Access Control in Windows.
-
 reconnaissance:
   label: Reconnaissance
   description: |
-    This technique can be used to gather interesting information.
+    The adversary is trying to gather information they can use to plan future operations.
 
-dump:
-  label: Dump
+resource development:
+  label: Resource Development
   description: |
-    This technique can be used to dump process.
+    The adversary is trying to establish resources they can use to support operations.
+
+initial access:
+  label: Initial Access
+  description: |
+    The adversary is trying to get into your network.
+
+execution:
+  label: Execution
+  description: |
+    The adversary is trying to run malicious code.
+
+persistence:
+  label: Persistence
+  description: |
+    The adversary is trying to maintain their foothold.
+
+privilege escalation:
+  label: Privilege Escalation
+  description: |
+    The adversary is trying to gain higher-level permissions.
+
+defense evasion:
+  label: Defense Evasion
+  description: |
+    The adversary is trying to avoid being detected.
+
+credential access:
+  label: Credential Access
+  description: |
+    The adversary is trying to steal account names and passwords.
+
+discovery:
+  label: Discovery
+  description: |
+    The adversary is trying to figure out your environment.
+
+lateral movement:
+  label: Lateral Movement
+  description: |
+    The adversary is trying to move through your environment.
+
+collection:
+  label: Collection
+  description: |
+    The adversary is trying to gather data of interest to their goal.
+
+command and control:
+  label: Command and Control
+  description: |
+    The adversary is trying to communicate with compromised systems to control them.
+
+exfiltration:
+  label: Exfiltration
+  description: |
+    The adversary is trying to steal data.
