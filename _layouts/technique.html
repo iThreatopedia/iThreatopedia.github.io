@@ -1,0 +1,121 @@
+---
+layout: common
+---
+
+{% include page_title.html title=page.Name %}
+{% include function_list.html bin=page %}
+
+{{ page.Description | markdownify }}
+
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+<script src="{{ '/assets/url_helper.js' | relative_url }}"></script>
+<br>
+<div><b>Paths:</b>
+	<ul style="list-style-type:none">
+	{% for ent in page.Full_Path %}
+	<li>{{ent.Path}}</li>
+	{% endfor %}
+	</ul>
+</div>
+{% assign resources = page.Resources %}
+{% if resources and resources.size > 0 %}
+<br>
+<b>Resources:</b>
+<ul>
+	{% for ent in page.Resources %}
+	<li><a href="{{ent.Link}}">{{ent.Link}}</a></li>
+	{% endfor %}
+</ul>
+{% endif %}
+{% assign acknowledgements = page.Acknowledgement %}
+{% if acknowledgements and acknowledgements.size > 0 %}
+<br>
+<div><b>Acknowledgements:</b>
+<ul>
+	{% for pers in page.Acknowledgement %}
+	<li>{{pers.Person}}{% if pers.Handle %} (<a href="https://twitter.com/{{pers.Handle}}">{{pers.Handle}}</a>){% endif %}</li>
+	{% endfor %}
+</ul>
+</div>
+{% endif %}
+<br>
+<ol>
+{% assign test = page.Commands | group_by:"Category"%}
+{% for Command in test%}
+	{% assign function_name = Command.name | downcase %}
+<h2 id="{{function_name}}" class ="function-name">
+	{{- site.data.functions[function_name].label -}}
+</h2>
+	{% for item in Command.items %}
+	
+		<li><h3>{{item.Name}}</h3></li>
+		{{item.Description | escape}}
+		<br>
+		<br>
+		{{item.Usecase | escape}}
+		<br>
+		<br>
+		{% assign repros = item.Reproduce %}
+		{% if repros and repros.size > 0 %}
+		<div>
+			<b>Execute:</b>
+			<ul>
+				{% for repro in repros %}{% for entity in repro %}
+					{% if entity[0] != 'IOC' %}
+						{% capture value %} {{ entity[1] }} {% endcapture %}
+					{% else %}
+						{% assign value = entity[1] | escape %}
+					{% endif %}
+					<li>{{entity[0]}}: {{value}}</li>
+				{% endfor %}{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
+
+{% assign detections = item.Detect %}
+{% if detections and detections.size > 0 %}
+<div>
+	<b>Detect:</b>
+	<ul>
+		{% for detection in detections %}{% for entity in detection %}
+			{% if entity[0] != 'IOC' %}
+				{% capture value %} {{ entity[1] }} {% endcapture %}
+			{% else %}
+				{% assign value = entity[1] | escape %}
+			{% endif %}
+			<li>{{entity[0]}}: <pre><code>{{value}}</code></pre></li>
+		{% endfor %}{% endfor %}
+	</ul>
+</div>
+{% endif %}
+
+
+{% assign responses = item.Respond %}
+{% if responses and responses.size > 0 %}
+
+<div><b>Respond:</b>
+<ol>
+	{% for response in responses %}
+	<li>{{response.Step}}</li>
+	{% endfor %}
+</ol>
+</div>
+{% endif %}
+
+		<b>Privileges required</b>: {{item.Privileges}}
+		<br>
+		<b>MITRE ATT&CK&reg</b>: <span data-attack-tid="{{item.MitreID}}">{{item.MitreID}}</span>
+		<br>
+		<br>
+		<br>
+	{% endfor %}
+{% endfor %}
+</ol>

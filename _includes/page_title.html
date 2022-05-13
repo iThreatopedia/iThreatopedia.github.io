@@ -1,0 +1,9 @@
+<h1>
+    {% if page.url != '/' %}
+    <a href="{{ '/' | relative_url }}">..</a> /
+    {% endif %}
+    {{ include.title }}
+    <div class="github-buttons">
+        <a class="github-button" href="https://github.com/iThreatopedia/iThreatopedia.github.io" data-icon="octicon-star" data-show-count="true" aria-label="Star iThreatopedia on GitHub">Star</a>
+    </div>
+</h1>

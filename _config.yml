@@ -1,0 +1,16 @@
+---
+title: iThreatopedia
+
+exclude: ["/Gemfile", "/Makefile", "/README.md", "LICENSE"]
+
+permalink: pretty
+
+collections:
+  iThreatopedia:
+    output: true
+
+defaults:
+  - scope:
+      path: "_iThreatopedia"
+    values:
+      layout: "technique"
