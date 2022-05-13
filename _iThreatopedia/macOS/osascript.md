@@ -66,7 +66,7 @@ Commands:
       - Prelude Operator: Run the "JXA Access" Chain, which contains the Deploy a stage-0 JXA agent TTP. Once the agent beacons back to Operator, select it and execute any macOS chain or TTP.
     Detect:
       - EDR: parent_process_name = "osascript"  AND NOT process_name = "osascript"
-      - EDR Notes: When adding exclusions to this query for baselining or threat hunting, DO NOT exclude based on a shell/interpreter, such as sh or bash. When JXA agents are ran with osascript, they will shell out using sh, bash, or some other shell.
+      - EDR Notes: When adding exclusions to this query for baselining or threat hunting, DO NOT exclude based on the process_name of a shell/interpreter, such as sh or bash. When JXA agents are ran with osascript, they will shell out using sh, bash, or some other shell.
     Respond:
       - Step: View the cmdline of osascript execution. If a true positive, this may provide exactly what the attacker is attempting to achieve.
       - Step: View the cmdline of the target process. This will be the process launched by osascript. Is the cmdline suspicious? 
