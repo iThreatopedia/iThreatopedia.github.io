@@ -30,7 +30,7 @@ NOTE: "Please use the rendered version of this file"
         {% endfor %}
     ],
     "gradient": {
-        "colors": ["#ff6666ff", "#ffe766ff"],
+        "colors": ["#bc99d9", "#6a4391"],
         "minValue": 0,
         "maxValue": {{max_score}}
     }
