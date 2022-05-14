@@ -226,13 +226,13 @@ h2, h3, h4, h5, h5 {
 ul {
     margin: 0;
     list-style-position: inside;
-    padding-left: 0;
+    padding-left: 20px;
 }
 
 ol {
     margin: 0;
     list-style-position: outside;
-    padding-left: 0;
+    padding-left: 20px;
 }
 
 .inside-list {
@@ -240,5 +240,5 @@ ol {
 }
 
 .notes-padding {
-    padding-left: 1;
+    padding-left: 40px;
 }
