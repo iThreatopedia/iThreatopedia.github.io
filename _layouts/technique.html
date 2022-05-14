@@ -87,7 +87,7 @@ layout: common
 	<ul>
 		{% for detection in detections %}{% for entity in detection %}
 			{% if entity[0] == 'Notes' %}
-				<ul>
+				<ul class="notes-padding">
 					{% assign value = entity[1] | escape %}
 					<li>{{value}}</li>
 				</ul>
@@ -106,7 +106,7 @@ layout: common
 {% if responses and responses.size > 0 %}
 
 <div><b>Respond:</b>
-<ol class="notes">
+<ol class="inside-list">
 	{% for response in responses %}
 	<li>{{response.Step}}</li>
 	{% endfor %}
