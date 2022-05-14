@@ -89,7 +89,7 @@ layout: common
 			{% if entity[0] == 'Notes' %}
 				<ul class="notes-padding">
 					{% assign value = entity[1] | escape %}
-					<li>{{value}}</li>
+					<li><em>{{value}}</em></li>
 				</ul>
 			{% else %}
 				{% assign value = entity[1] | escape %}
