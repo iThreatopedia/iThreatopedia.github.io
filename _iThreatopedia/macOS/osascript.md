@@ -66,7 +66,7 @@ Commands:
       - Prelude Operator: Run the "JXA Access" Chain, which contains the Deploy a stage-0 JXA agent TTP. Once the agent beacons back to Operator, select it and execute any macOS chain or TTP.
     Detect:
       - EDR: parent_process_name = "osascript"  AND NOT process_name = "osascript"
-      - EDR Notes: When adding exclusions to this query for baselining or threat hunting, DO NOT exclude based on the process_name of a shell/interpreter, such as sh or bash. When JXA agents are ran with osascript, they will shell out using sh, bash, or some other shell.
+      - Notes: When adding exclusions to this query for baselining or threat hunting, DO NOT exclude based on the process_name of a shell/interpreter, such as sh or bash. When JXA agents are ran with osascript, they will shell out using sh, bash, or some other shell.
     Respond:
       - Step: View the cmdline of osascript execution. If a true positive, this may provide exactly what the attacker is attempting to achieve.
       - Step: View the cmdline of the target process. This will be the process launched by osascript. Is the cmdline suspicious? 
@@ -81,7 +81,7 @@ Commands:
       - Prelude Operator: Run the "JXA Access" Chain, which contains the Deploy a stage-0 JXA agent TTP. Once the agent beacons back to Operator, select it and execute any macOS chain or TTP.
     Detect:
       - EDR: process_name = "osascript" AND NOT (process_cmdline = "*.js*" OR process_cmdline = "JavaScript")
-      - EDR Notes: Notice we are making some dangerous exclusions - this is because we want to minimize duplicate alerts since the "osascript executing JavaScript" already covers this. This will generate lots of false positives, so you'll need to exclude based on process relationship information.
+      - Notes: Notice we are making some dangerous exclusions - this is because we want to minimize duplicate alerts since the "osascript executing JavaScript" already covers this. This will generate lots of false positives, so you'll need to exclude based on process relationship information.
     Respond:
       - Step: View the cmdline of osascript execution. If a true positive, this may provide exactly what the attacker is attempting to achieve.
       - Step: View the process' parent information. Is the binary suspicious? Typically osascript post-exploitation execution's will be the result of an adversary "shelling out" from their C2.

@@ -86,9 +86,11 @@ layout: common
 	<b>Detect:</b>
 	<ul>
 		{% for detection in detections %}{% for entity in detection %}
-			{% if entity[0] == 'EDR Notes' %}
-				{% assign value = entity[1] | escape %}
-				<li>{{entity[0]}}: {{value}}</li>
+			{% if entity[0] == 'Notes' %}
+				<ul>
+					{% assign value = entity[1] | escape %}
+					<li>{{value}}</li>
+				</ul>
 			{% else %}
 				{% assign value = entity[1] | escape %}
 				<li>{{entity[0]}}: <pre><code>{{value}}</code></pre></li>
