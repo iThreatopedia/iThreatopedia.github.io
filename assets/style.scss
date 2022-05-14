@@ -227,16 +227,19 @@ ul {
     margin: 0;
     list-style-position: inside;
     padding-left: 20px;
+    
 }
 
 ol {
     margin: 0;
     list-style-position: outside;
     padding-left: 20px;
+    list-style-type: circle;
 }
 
 .inside-list {
     list-style-position: inside;
+    list-style-type: circle;
 }
 
 .notes-padding {
