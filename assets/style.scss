@@ -227,7 +227,7 @@ ul {
     margin: 0;
     list-style-position: inside;
     padding-left: 20px;
-    list-style-type: none;
+    list-style-type: circle;
 }
 
 ol {
@@ -242,4 +242,8 @@ ol {
 
 .notes-padding {
     padding-left: 25px;
+}
+
+.no-list-style {
+    list-style-type: none;
 }

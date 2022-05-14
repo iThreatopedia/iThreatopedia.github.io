@@ -19,7 +19,7 @@ layout: common
 <script src="{{ '/assets/url_helper.js' | relative_url }}"></script>
 <br>
 <div><b>Paths:</b>
-	<ul style="list-style-type:none">
+	<ul class="no-list-style">
 	{% for ent in page.Full_Path %}
 	<li>{{ent.Path}}</li>
 	{% endfor %}
@@ -29,7 +29,7 @@ layout: common
 {% if resources and resources.size > 0 %}
 <br>
 <b>Resources:</b>
-<ul>
+<ul class="no-list-style">
 	{% for ent in page.Resources %}
 	<li><a href="{{ent.Link}}">{{ent.Link}}</a></li>
 	{% endfor %}
@@ -39,7 +39,7 @@ layout: common
 {% if acknowledgements and acknowledgements.size > 0 %}
 <br>
 <div><b>Acknowledgements:</b>
-<ul>
+<ul class="no-list-style">
 	{% for pers in page.Acknowledgement %}
 	<li>{{pers.Person}}{% if pers.Handle %} (<a href="https://twitter.com/{{pers.Handle}}">{{pers.Handle}}</a>){% endif %}</li>
 	{% endfor %}
@@ -67,7 +67,7 @@ layout: common
 		{% if repros and repros.size > 0 %}
 		<div>
 			<b>Execute:</b>
-			<ul>
+			<ul class="no-list-style">
 				{% for repro in repros %}{% for entity in repro %}
 					{% if entity[0] != 'IOC' %}
 						{% capture value %} {{ entity[1] }} {% endcapture %}
@@ -84,10 +84,10 @@ layout: common
 {% if detections and detections.size > 0 %}
 <div>
 	<b>Detect:</b>
-	<ul>
+	<ul class="no-list-style">
 		{% for detection in detections %}{% for entity in detection %}
 			{% if entity[0] == 'Notes' %}
-				<ul class="notes-padding">
+				<ul class="notes-padding no-list-style">
 					{% assign value = entity[1] | escape %}
 					<li><em>{{value}}</em></li>
 				</ul>
