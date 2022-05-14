@@ -66,7 +66,7 @@ layout: common
 		{% assign repros = item.Reproduce %}
 		{% if repros and repros.size > 0 %}
 		<div>
-			<b class="item-padding">Execute:</b>
+			<b>Execute:</b>
 			<ul>
 				{% for repro in repros %}{% for entity in repro %}
 					{% if entity[0] != 'IOC' %}
@@ -83,7 +83,7 @@ layout: common
 {% assign detections = item.Detect %}
 {% if detections and detections.size > 0 %}
 <div>
-	<b class="item-padding">Detect:</b>
+	<b>Detect:</b>
 	<ul>
 		{% for detection in detections %}{% for entity in detection %}
 			{% if entity[0] == 'Notes' %}
@@ -105,7 +105,7 @@ layout: common
 {% assign responses = item.Respond %}
 {% if responses and responses.size > 0 %}
 
-<div><b class="item-padding">Respond:</b>
+<div><b>Respond:</b>
 <ol class="inside-list">
 	{% for response in responses %}
 	<li>{{response.Step}}</li>
@@ -114,9 +114,9 @@ layout: common
 </div>
 {% endif %}
 
-		<b class="item-padding">Privileges required</b>: {{item.Privileges}}
+		<b>Privileges required</b>: {{item.Privileges}}
 		<br>
-		<b class="item-padding">MITRE ATT&CK&reg</b>: <span data-attack-tid="{{item.MitreID}}">{{item.MitreID}}</span>
+		<b>MITRE ATT&CK&reg</b>: <span data-attack-tid="{{item.MitreID}}">{{item.MitreID}}</span>
 		<br>
 		<br>
 		<br>
