@@ -15,7 +15,7 @@ Commands:
     Category: 
     Privileges: User or Root
     MitreID: T1059.007
-    Reproduce:
+    Execute:
       - Prelude Operator: Run the "#changeme" Chain, which contains the "#changeme" TTP.
     Detect:
       - EDR: 
