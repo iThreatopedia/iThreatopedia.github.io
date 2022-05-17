@@ -12,7 +12,7 @@ Resources:
   - Link: https://github.com/AutomoxSecurity/iShelly
 Commands:
 
-  - Name: macOS installer package with preinstall script
+  - Name: macOS Installer Package with preinstall Script
     Description: This query detects any instance of macOS installers running a preinstall script.
     Usecase: Adversaries may pair this technique with a social engineering component to execute malware.
     Category: Execution
@@ -35,7 +35,7 @@ Commands:
       - Step: Review the children of process package_script_service (often this will be the bash process, but could be another script interpreter). These children will be the commands executed as a result of the preinstall script.
       - Step: Review process creations, network connections and file writes of all children processes of package_script_service.
 
-  - Name: macOS installer package with postinstall script
+  - Name: macOS Installer Package with postinstall Script
     Description: This query detects any instance of macOS installers running a postinstall script.
     Usecase: Adversaries may pair this technique with a social engineering component to execute malware.
     Category: Execution
@@ -58,8 +58,8 @@ Commands:
       - Step: Review the children of process package_script_service (often this will be the bash process, but could be another script interpreter). These children will be the commands executed as a result of the postinstall script.
       - Step: Review process creations, network connections and file writes of all children processes of package_script_service.
 
-  - Name: macOS installer plugin
-    Description: This query detects any instance of macOS installer plugins.
+  - Name: macOS Installer Plugins
+    Description: This query detects any macOS Installer that leverages an installer plugins.
     Usecase: Adversaries may pair this technique with a social engineering component to execute malware. Adversaries may use this technique to generate less known EDR behavioral patterns or when they need malware running as user.
     Category: Execution
     Privileges: User
@@ -80,7 +80,7 @@ Commands:
       - Step: Review the children of process InstallerRemotePluginService-x86_64.
       - Step: Review process creations, network connections and file writes of all children processes of InstallerRemotePluginService-x86_64.
 
-  - Name: installer package w/ javascript functionality
+  - Name: macOS Installer Package with JavaScript Functionality
     Description: This query detects installer packages leveraging JavaScript functionality via distribution.xml files. The malicious commands can either be in distrubtion.xml file, or the distribution.xml file invoke a script included in the installer. You should test both cases by generating the payloads using iShelly.
     Usecase: Adversaries may pair this technique with a social engineering component to execute malware. Adversaries may use this technique to generate less known EDR behavioral patterns or when they need malware running as user.
     Category: Execution
