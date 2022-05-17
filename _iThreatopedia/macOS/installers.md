@@ -22,7 +22,7 @@ Commands:
       - Step: After the user clicks through Installer prompts and authenticates, launchd runs package_script_service as root.
       - Step: package_script_service runs bash (or whatever script interpreter is used in the installer) as root with a cmdline similar to <pre><code>/bin/bash /tmp/PKInstallSandbox.YxqP12/Scripts/com.simple.test.ir2Zsb/preinstall /Users/user/iShelly/Payloads/install_pkg.pkg / / / </code></pre>
       - Step: The bash process launches cp as root with the following cmdline <pre><code>cp files/operator-payload /Library/Application Support/ "</pre></code> chmod is also executed by the same bash process to make it executable using cmdline <pre><code>chmod +x /Library/Application Support/operator-payload </pre></code>
-      - Step: nohup then executes bash as root with cmdline <pre><code>nohup bash -c /Library/Application\\ Support/operator-payload -name installer-w-preinstall-script</pre></code>
+      - Step: the same bash process executes nohup -> bash as root with cmdline <pre><code>nohup bash -c /Library/Application\\ Support/operator-payload -name installer-w-preinstall-script</pre></code>
       - Step: operator-payload executes as root using cmdline <pre><code>/Library/Application Support/operator-payload -name installer-w-preinstall-script</pre></code> and makes a network connection to operator.
     Execute:
       - Prelude Operator: Run <a href="https://github.com/AutomoxSecurity/iShelly">iShelly</a> with the "Installer Package w/ only preinstall script" Installer Package option. Then execute the pkg file, which will execute an Operator agent after clicking through Installer prompts.
@@ -44,7 +44,7 @@ Commands:
       - Step: After the user clicks through Installer prompts and authenticates, launchd runs package_script_service as root.
       - Step: package_script_service runs bash (or whatever script interpreter is used in the installer) as root with a cmdline similar to <pre><code>/bin/bash /tmp/PKInstallSandbox.YxqP12/Scripts/com.simple.test.ir2Zsb/postinstall /Users/user/iShelly/Payloads/install_pkg.pkg / / / </code></pre>
       - Step: The bash process launches cp as root with the following cmdline <pre><code>cp files/operator-payload /Library/Application Support/ "</pre></code> chmod is also executed by the same bash process to make it executable using cmdline <pre><code>chmod +x /Library/Application Support/operator-payload </pre></code>
-      - Step: nohup then executes bash as root with cmdline <pre><code>nohup bash -c /Library/Application\\ Support/operator-payload -name installer-w-postinstall-script</pre></code>
+      - Step: the same bash process executes nohup -> bash as root with cmdline <pre><code>nohup bash -c /Library/Application\\ Support/operator-payload -name installer-w-postinstall-script</pre></code>
       - Step: operator-payload executes as root using cmdline <pre><code>/Library/Application Support/operator-payload -name installer-w-postinstall-script</pre></code> and makes a network connection to operator.
     Execute:
       - Prelude Operator: Run <a href="https://github.com/AutomoxSecurity/iShelly">iShelly</a> with the "Installer Package w/ only postinstall script" Installer Package option. Then execute the pkg file, which will execute an Operator agent after clicking through Installer prompts.
