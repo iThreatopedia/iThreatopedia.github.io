@@ -63,7 +63,20 @@ layout: common
 		{{item.Usecase | escape}}
 		<br>
 		<br>
-		{% assign repros = item.Reproduce %}
+		{% assign behaviors = item.behaviors %}
+		{% if behaviors and behaviors.size > 0 %}
+
+		<div><b>OS Behavior:</b>
+		<ol class="inside-list">
+			{% for behavior in behaviors %}
+			<li>{{behavior.Step}}</li>
+			{% endfor %}
+		</ol>
+		</div>
+		{% endif %}
+		<br>
+		<br>
+		{% assign repros = item.Execute %}
 		{% if repros and repros.size > 0 %}
 		<div>
 			<b>Execute:</b>
