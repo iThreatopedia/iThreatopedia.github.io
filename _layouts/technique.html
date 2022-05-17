@@ -63,7 +63,7 @@ layout: common
 		{{item.Usecase | escape}}
 		<br>
 		<br>
-		{% assign behaviors = item.behaviors %}
+		{% assign behaviors = item.Behaviors %}
 		{% if behaviors and behaviors.size > 0 %}
 
 		<div><b>OS Behavior:</b>
@@ -73,9 +73,10 @@ layout: common
 			{% endfor %}
 		</ol>
 		</div>
+		<br>
+		<br>
 		{% endif %}
-		<br>
-		<br>
+
 		{% assign repros = item.Execute %}
 		{% if repros and repros.size > 0 %}
 		<div>
