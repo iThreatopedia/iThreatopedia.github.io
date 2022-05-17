@@ -1,6 +1,6 @@
 ---
 Name: Installers
-Description: On macOS, malware is often distributed to users via macOS Installers.
+Description: On macOS, malware is often distributed to users via macOS Installers. These are generally going to be extremely noisy in most environments. Most of these are only recommended for threat hunting, baselining or trigger some automated action to collect more information from the endpoint.
 Author: 
 Created: 2022-05-17
 Full_Path:
@@ -28,7 +28,7 @@ Commands:
       - Prelude Operator: Run <a href="https://github.com/AutomoxSecurity/iShelly">iShelly</a> with the "Installer Package w/ only preinstall script" Installer Package option. Then execute the pkg file, which will execute an Operator agent after clicking through Installer prompts.
     Detect:
       - EDR: parent_process_name = "package_script_service" and process_cmdline = "*preinstall*"
-      - Notes: Alerting on this will be extremely noisy and is not recommended. 
+      - Notes: Alerting on this will be extremely noisy and is not recommended. If using for baselining, exclude based on the pkg name in process_cmdline, but beware an attacker can also leverage this by naming their package after a popular installer.
     Respond:
       - Step: View the process_cmdline field. This will contain the execution of the preinstall script and will have the name of the .pkg being executed.
       - Step: Look at children of the process (often this will be the bash process, but could be another script interpreter). These children will be the commands executed as a result of the preinstall script.
