@@ -11,7 +11,7 @@ Resources:
   - Link: https://github.com/AutomoxSecurity/iShelly
 Commands:
 
-  - Name: macOS installer with preinstall script
+  - Name: macOS installer package with preinstall script
     Description: This query detects any instance of macOS installers running a preinstall script.
     Usecase: Adversaries may pair this technique with a social engineering component to execute malware.
     Category: Execution
@@ -33,7 +33,7 @@ Commands:
       - Step: View the process_cmdline field. This will contain the execution of the preinstall script and will have the name of the .pkg being executed.
       - Step: Look at children of the process (often this will be the bash process, but could be another script interpreter). These children will be the commands executed as a result of the preinstall script.
 
-  - Name: macOS installer with postinstall script
+  - Name: macOS installer package with postinstall script
     Description: This query detects any instance of macOS installers running a postinstall script.
     Usecase: Adversaries may pair this technique with a social engineering component to execute malware.
     Category: Execution
