@@ -32,6 +32,7 @@ Commands:
     Respond:
       - Step: View the process_cmdline field. This will contain the execution of the preinstall script and will have the name of the .pkg being executed.
       - Step: Look at children of the process (often this will be the bash process, but could be another script interpreter). These children will be the commands executed as a result of the preinstall script.
+      - Step: Review all file writes and network connections of all children processes.
 
   - Name: macOS installer package with postinstall script
     Description: This query detects any instance of macOS installers running a postinstall script.
@@ -54,6 +55,7 @@ Commands:
     Respond:
       - Step: View the process_cmdline field. This will contain the execution of the postinstall script and will have the name of the .pkg being executed.
       - Step: Look at children of the process (often this will be the bash process, but could be another script interpreter). These children will be the commands executed as a result of the postinstall script.
+      - Step: Review all file writes and network connections of all children processes.
 
   - Name: macOS installer plugin
     Description: This query detects any instance of macOS installer plugins.
