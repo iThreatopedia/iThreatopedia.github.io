@@ -7,6 +7,7 @@ Full_Path:
   - Path: /System/Library/CoreServices/Installer.app/Contents/MacOS/Installer
   - Path: /System/Library/PrivateFrameworks/PackageKit.framework/Versions/A/XPCServices/package_script_service.xpc/Contents/MacOS/package_script_service
   - Path: /bin/bash
+  - Path: /System/Library/CoreServices/Installer.app/Contents/XPCServices/InstallerRemotePluginService-x86_64.xpc/Contents/MacOS/InstallerRemotePluginService-x86_64
 Resources:
   - Link: https://github.com/AutomoxSecurity/iShelly
 Commands:
@@ -76,8 +77,8 @@ Commands:
     Detect:
       - EDR: process_name = "InstallerRemotePluginService-x86_64"
     Respond:
-      - Step: Review the children of process InstallerRemotePluginService.
-      - Step: Review process creations, network connections and file writes of all children processes of InstallerRemotePluginService.
+      - Step: Review the children of process InstallerRemotePluginService-x86_64.
+      - Step: Review process creations, network connections and file writes of all children processes of InstallerRemotePluginService-x86_64.
 
   - Name: installer package w/ javascript functionality
     Description: This query detects installer packages leveraging JavaScript functionality via distribution.xml files. The malicious commands can either be in distrubtion.xml file, or the distribution.xml file invoke a script included in the installer. You should test both cases by generating the payloads using iShelly.
