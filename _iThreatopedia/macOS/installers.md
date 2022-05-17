@@ -30,9 +30,9 @@ Commands:
       - EDR: parent_process_name = "package_script_service" and process_cmdline = "*preinstall*"
       - Notes: Alerting on this will be extremely noisy and is not recommended. If using for baselining, exclude based on the pkg name in process_cmdline, but beware an attacker can also leverage this by naming their package after a popular installer.
     Respond:
-      - Step: View the process_cmdline field. This will contain the execution of the preinstall script and will have the name of the .pkg being executed.
-      - Step: Look at children of the process (often this will be the bash process, but could be another script interpreter). These children will be the commands executed as a result of the preinstall script.
-      - Step: Review all file writes and network connections of all children processes.
+      - Step: Review the process_cmdline field of process package_script_service. This will contain the execution of the preinstall script and will have the name of the .pkg being executed.
+      - Step: Review the children of process package_script_service (often this will be the bash process, but could be another script interpreter). These children will be the commands executed as a result of the preinstall script.
+      - Step: Review process creations, network connections and file writes of all children processes of package_script_service.
 
   - Name: macOS installer package with postinstall script
     Description: This query detects any instance of macOS installers running a postinstall script.
@@ -53,9 +53,9 @@ Commands:
       - EDR: parent_process_name = "package_script_service" and process_cmdline = "*postinstall*"
       - Notes: Alerting on this will be extremely noisy and is not recommended. If using for baselining, exclude based on the pkg name in process_cmdline, but beware an attacker can also leverage this by naming their package after a popular installer.
     Respond:
-      - Step: View the process_cmdline field. This will contain the execution of the postinstall script and will have the name of the .pkg being executed.
-      - Step: Look at children of the process (often this will be the bash process, but could be another script interpreter). These children will be the commands executed as a result of the postinstall script.
-      - Step: Review all file writes and network connections of all children processes.
+      - Step: Review the process_cmdline field of process package_script_service. This will contain the execution of the postinstall script and will have the name of the .pkg being executed.
+      - Step: Review the children of process package_script_service (often this will be the bash process, but could be another script interpreter). These children will be the commands executed as a result of the postinstall script.
+      - Step: Review process creations, network connections and file writes of all children processes of package_script_service.
 
   - Name: macOS installer plugin
     Description: This query detects any instance of macOS installer plugins.
@@ -75,6 +75,6 @@ Commands:
     Detect:
       - EDR: process_name = "InstallerRemotePluginService-x86_64"
     Respond:
-      - Step: View the children of the process. 
-      - Step: View all network connections and file writes of all children processes.
+      - Step: Review the children of process InstallerRemotePluginService.
+      - Step: Review process creations, network connections and file writes of all children processes of InstallerRemotePluginService.
 ---
