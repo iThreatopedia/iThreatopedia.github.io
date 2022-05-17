@@ -13,15 +13,15 @@ Commands:
 
   - Name: macOS installer with preinstall script
     Description: This query detects any instance of macOS installers running a preinstall script.
-    Usecase: Adversaries may pair this technique with a social engineering component to execute their malware.
+    Usecase: Adversaries may pair this technique with a social engineering component to execute malware.
     Category: Execution
     Privileges: Root
     MitreID: T1204.002
     Behaviors:
-      - Step: When executing the pkg file generated via iShelly, launchd runs Installer with user permissions.
-      - Step: After user clicks through Installer prompts and enters sudo auth info, launchd runs package_script_service as root.
-      - Step: package_script_service runs bash(or whatever script interpreter is used in the installer) as root with a cmdline similar to `/bin/bash /tmp/PKInstallSandbox.YxqP12/Scripts/com.simple.test.ir2Zsb/preinstall /Users/user/iShelly/Payloads/install_pkg.pkg / / / `
-      - Step: the bash process launches cp as root with the following cmdline `cp files/operator-payload /Library/Application Support/ `. chmod is also executed to make it executable using cmdline `chmod +x /Library/Application Support/operator-payload `
+      - Step: When executing the pkg file generated via iShelly, launchd runs Installer as user.
+      - Step: After the user clicks through Installer prompts and authenticates, launchd runs package_script_service as root.
+      - Step: package_script_service runs bash (or whatever script interpreter is used in the installer) as root with a cmdline similar to "/bin/bash /tmp/PKInstallSandbox.YxqP12/Scripts/com.simple.test.ir2Zsb/preinstall /Users/user/iShelly/Payloads/install_pkg.pkg / / / "
+      - Step: The bash process launches cp as root with the following cmdline "cp files/operator-payload /Library/Application Support/ ". chmod is also executed to make it executable using cmdline "chmod +x /Library/Application Support/operator-payload "
       - Step: nohup then executes bash as root with cmdline `nohup bash -c /Library/Application\\ Support/operator-payload -name installer-w-preinstall-script`
       - Step: operator-payload executes as root sing cmdline `/Library/Application Support/operator-payload -name installer-w-preinstall-script` and makes a network connection to operator.
     Execute:
