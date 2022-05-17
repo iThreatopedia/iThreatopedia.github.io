@@ -1,6 +1,6 @@
 ---
 Name: Installers
-Description: On macOS, malware is often distributed to users via macOS Installers. These are generally going to be extremely noisy in most environments. Most of these are only recommended for threat hunting, baselining or trigger some automated action to collect more information from the endpoint.
+Description: On macOS, malware is often distributed to users via macOS Installers. These are generally going to be extremely noisy in most environments. Most of these are only recommended for threat hunting, baselining or to trigger some automated action to collect more information from the endpoint.
 Author: 
 Created: 2022-05-17
 Full_Path:
