@@ -60,7 +60,7 @@ Commands:
 
   - Name: macOS Installer Plugins
     Description: This query detects any macOS Installer that leverages an installer plugins.
-    Usecase: Adversaries may pair this technique with a social engineering component to execute malware. Adversaries may use this technique to generate less known EDR behavioral patterns or when they need malware running as user.
+    Usecase: Adversaries may pair this technique with a social engineering component to execute malware. They may use this technique to generate less known EDR behavioral patterns or when they need malware running as user.
     Category: Execution
     Privileges: User
     MitreID: T1204.002
@@ -82,7 +82,7 @@ Commands:
 
   - Name: macOS Installer Package with JavaScript Functionality
     Description: This query detects installer packages leveraging JavaScript functionality via distribution.xml files. The malicious commands can either be in distrubtion.xml file, or the distribution.xml file invoke a script included in the installer. You should test both cases by generating the payloads using iShelly.
-    Usecase: Adversaries may pair this technique with a social engineering component to execute malware. Adversaries may use this technique to generate less known EDR behavioral patterns or when they need malware running as user.
+    Usecase: Adversaries may pair this technique with a social engineering component to execute malware. They may use this technique to generate less known EDR behavioral patterns or when they need malware running as user.
     Category: Execution
     Privileges: User
     MitreID: T1204.002
