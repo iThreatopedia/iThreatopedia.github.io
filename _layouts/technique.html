@@ -105,8 +105,11 @@ layout: common
 				</ul>
 			{% else %}
 				{% assign value = entity[1] | escape %}
+				{% if entity[0] == 'Prelude Operator' %}
+				<li><a href="https://www.prelude.org/"></a>{{entity[0]}}</a>: <pre><code>{{value}}</code></pre></li>
+				{% else %}
 				<li>{{entity[0]}}: <pre><code>{{value}}</code></pre></li>
-
+				{% endif %}
 			{% endif %}
 		{% endfor %}{% endfor %}
 	</ul>
