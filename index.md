@@ -26,7 +26,7 @@ Below is a list of Tactics, Techniques and Procedures (TTP's) targeting the macO
 </ul>
 <br>
 <br>
-<span style="font-style: italic;">MITRE ATT&amp;CK&reg; and ATT&amp;CK&reg; are registered trademarks of The MITRE Corporation.</span> You can see the current ATT&amp;CK&reg; mapping of this project on the <a href="https://mitre-attack.github.io/attack-navigator/#layerURL={{ '/mitre_attack_navigator_layer.json' | absolute_url | replace:"http://","https://" }}">ATT&amp;CK&reg; Navigator</a>.
+<span style="font-style: italic;">MITRE ATT&amp;CK&reg; and ATT&amp;CK&reg; are registered trademarks of The MITRE Corporation.</span> You can see the current ATT&amp;CK&reg; mapping of this project on the <a href="https://mitre-attack.github.io/attack-navigator/#layerURL={{ '/mitre_attack_navigator_layer.json' | absolute_url | replace:"http://","https://" }}">ATT&amp;CK&reg; Navigator</a> (be sure to click the "expand annotated sub-techniques under the layer controls on the top right!).
 
 </div>
 </div>
