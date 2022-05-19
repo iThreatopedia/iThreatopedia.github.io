@@ -21,7 +21,7 @@ Below is a list of Tactics, Techniques and Procedures (TTP's) targeting the macO
 <br>
 <ul>
   <li>information about each TTP</li>
-  <li>a way to reproduce the TTP using Prelude Operator</li>
+  <li>a way to reproduce the TTP using <a href="https://www.prelude.org">Prelude Operator</a></li>
   <li>detection queries using Endpoint Detection and Response (EDR)</li>
 </ul>
 <br>
