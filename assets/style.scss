@@ -2,7 +2,7 @@
 ---
 
 $accent: #bd7ae9;
-$lighter: #e6b7f1;
+$lighter: #e5caf6;
 $hover: #9e4ce4;
 
 
@@ -50,7 +50,7 @@ body {
 code {
     padding: 0.15em 0.25em;
     border-radius: 0.25em;
-    color: $hover;
+    color: $accent;
     background: $lighter;
 }
 
