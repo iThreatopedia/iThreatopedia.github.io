@@ -13,7 +13,7 @@ Resources:
 Commands:
 
   - Name: Macro VBA for Excel, PowerPoint and Word
-    Description: This query detects any instance of Excel, PowerPoint or Word spawning processes. This is typically done using the MacScript command of VBA, which is becoming more restricted via the Apple Sandbox. Microsoft appears to be moving away from MacScript in favor of the AppleScriptTask command.
+    Description: This query detects any instance of Excel, PowerPoint or Word spawning processes. This is typically done using the MacScript command of VBA, which is becoming more restricted via the Apple Sandbox. Although Microsoft appears to be moving away from MacScript in favor of the AppleScriptTask command, there is still some room for abuse (even on current versions of Office for Mac).
     Usecase: Adversaries may pair this technique with a social engineering component to execute malware.
     Category: Execution
     Privileges: User
