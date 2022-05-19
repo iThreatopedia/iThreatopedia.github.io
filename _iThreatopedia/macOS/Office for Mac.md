@@ -31,7 +31,7 @@ Commands:
     Detect:
       - EDR: (parent_process_image_path = "/Applications/Microsoft Excel.app/*" OR parent_process_image_path = "/Applications/Microsoft PowerPoint.app/*" OR parent_process_image_path = "/Applications/Microsoft Word.app/*") and process_name = "bash" and event_type = "Process Create"
     Respond:
-      - Step: Review the cmdline of bash's children. This should make it fairly easy to tell if it is malicious or not. For example, if it's curl reaching out to a suspect domain/IP and saving some payload to disk using -o argument, it likely warrants immediate investigation.
+      - Step: Review the cmdline of bash's children. This should make it fairly easy to tell if it is malicious or not. For example, if it's curl reaching out to a suspect domain/IP and saving a file to disk using -o argument, it likely warrants immediate investigation.
 
   - Name: Excel macro execution via SYLK file extension
     Description: This query detects any instance of Excel launching the bash process. The SYLK file extension is an ancient extension that can be abused to execute macros. Thankfully, the OS behaviors mimick that of regular macros being executed, so the same query from the "Macro VBA for Excel, PowerPoint and Word" TTP will detect this.
