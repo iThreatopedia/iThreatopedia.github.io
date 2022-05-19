@@ -17,7 +17,7 @@ Commands:
     Usecase: Adversaries may pair this technique with a social engineering component to execute malware.
     Category: Execution
     Privileges: User
-    MitreID: T1059.007
+    MitreID: T1204.002
     Behaviors:
       - Step: When opening a Office for Mac file (Excel, PPT, or Word), launchd creates the "/Applications/Microsoft Excel.app/Contents/MacOS/Microsoft Excel|PowerPoint|Word" process as user.
       - Step: A prompt appears on the GUI asking the user to enable macros.
@@ -38,7 +38,7 @@ Commands:
     Usecase: Adversaries may pair this technique with a social engineering component to execute malware.
     Category: Execution
     Privileges: User
-    MitreID: T1059.007
+    MitreID: T1204.002
     Behaviors:
       - Step: When opening a file with the slk extension, launchd creates the "/Applications/Microsoft Excel.app/Contents/MacOS/Microsoft Excel" process as user.
       - Step: A prompt appears on the GUI asking the user to enable macros.
