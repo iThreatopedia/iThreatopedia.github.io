@@ -1,6 +1,6 @@
 ---
 Name: Office for Mac
-Description: These techniques are far more common on the Windows side, but Office for Mac also has the ability to execute VBA on macOS systems. These techniques are far less common on macOS, likely because they stand out from an EDR perspective and Microsoft has implemented sandboxing in recent versions of Office for Mac (2016 and higher). However, it is still important to test these scenarios on all Office for Mac versions, since sandbox escapes are always possible and recent techniques such as SYLK file extension abuse share some of the same detection logic as VBA execution vectors.
+Description: These techniques are far more common on the Windows side, but Office for Mac also has the ability to execute VBA on macOS systems. These techniques are far less common on macOS, likely because they stand out from an EDR perspective and Microsoft has implemented sandboxing in recent versions of Office for Mac (2016 and higher). However, it is still important to test these scenarios on all Office for Mac versions, since sandbox escapes are always possible and recent techniques such as SYLK file extension abuse share some of the same detection logic as VBA execution vectors, without requiring VBA.
 Author: Adam Nadrowski
 Created: 2022-05-18
 Full_Path:
