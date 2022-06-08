@@ -78,7 +78,7 @@ Commands:
     Privileges: User or Root
     MitreID: T1059.002
     Execute:
-      - Prelude Operator: Run the "JXA Access" Chain, which contains the Deploy a stage-0 JXA agent TTP. Once the agent beacons back to Operator, select it and execute any macOS chain or TTP.
+      - Prelude Operator: Run the Stage pneuma via applescript pop-up TTP.
     Detect:
       - EDR: process_name = "osascript" AND NOT (process_cmdline = "*.js*" OR process_cmdline = "JavaScript")
       - Notes: Notice we are making some dangerous exclusions - this is because we want to minimize duplicate alerts since the "osascript executing JavaScript" already covers this. This will generate lots of false positives, so you'll need to exclude based on process relationship information.
