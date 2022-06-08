@@ -17,7 +17,7 @@ Commands:
     Category: Execution
     Privileges: User or Root
     MitreID: T1059.007
-    Reproduce:
+    Execute:
       - Prelude Operator: Run the "JXA Access" Chain, which contains the "Deploy a stage-0 JXA agent" TTP.
     Detect:
       - EDR: process_name = "osascript" AND netconn_count >= 1
@@ -32,7 +32,7 @@ Commands:
     Category: Execution
     Privileges: User or Root
     MitreID: T1059.007
-    Reproduce:
+    Execute:
       - Prelude Operator: Run the "JXA Access" Chain, which contains the "Deploy a stage-0 JXA agent" TTP.
     Detect:
       - EDR: process_name = "osascript" AND (process_cmdline = "*.js*" OR process_cmdline = "JavaScript")
@@ -47,7 +47,7 @@ Commands:
     Category: Credential Access
     Privileges: User or Root
     MitreID: T1059.002
-    Reproduce:
+    Execute:
       - Prelude Operator: Run the "AppleScript - Prompt User for Password" TTP.
     Detect:
       - EDR: process_name = "osascript" and process_cmdline =  "*password*"
@@ -62,7 +62,7 @@ Commands:
     Category: Execution
     Privileges: User or Root
     MitreID: T1059
-    Reproduce:
+    Execute:
       - Prelude Operator: Run the "JXA Access" Chain, which contains the Deploy a stage-0 JXA agent TTP. Once the agent beacons back to Operator, select it and execute any macOS chain or TTP.
     Detect:
       - EDR: parent_process_name = "osascript"  AND NOT process_name = "osascript"
@@ -77,7 +77,7 @@ Commands:
     Category: Execution
     Privileges: User or Root
     MitreID: T1059.002
-    Reproduce:
+    Execute:
       - Prelude Operator: Run the "JXA Access" Chain, which contains the Deploy a stage-0 JXA agent TTP. Once the agent beacons back to Operator, select it and execute any macOS chain or TTP.
     Detect:
       - EDR: process_name = "osascript" AND NOT (process_cmdline = "*.js*" OR process_cmdline = "JavaScript")
